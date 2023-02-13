@@ -23,48 +23,6 @@
         let info;
         try {
           information = await getInfo();
-          let chartOptions = {
-            responsive: true,
-            // maintainAspectRatio: false,
-            scales: {
-              x: {
-                title: {
-                  display: true,
-                  text: '[년도]',
-                },
-              },
-              y: [
-                {
-                  id: 'A',
-                  type: 'linear',
-                  position: 'right',
-                  ticks: {
-                    min: 0,
-                    max: 100,
-                    stepSize: 20,
-                    fontColor: '#ffbaa2',
-                    callback: function (value, index, values) {
-                      return value + ' %';
-                    },
-                  },
-                },
-                {
-                  id: 'B',
-                  type: 'linear',
-                  position: 'left',
-                  ticks: {
-                    min: 0,
-                    max: 100,
-                    stepSize: 20,
-                    fontColor: '#ffbaa2',
-                    callback: function (value, index, values) {
-                      return value + ' %';
-                    },
-                  },
-                },
-              ],
-            },
-          };
 
           const chartdata = {
             labels: [2017, 2018, 2019, 2020, 2021],
@@ -72,7 +30,7 @@
               {
                 label: '매출액',
                 type: 'bar',
-                yAxisID: 'A',
+                yAxisID: 'y',
                 data: [
                   information[2017]['매출액'].replace(',', ''),
                   information[2018]['매출액'].replace(',', ''),
@@ -86,7 +44,7 @@
               {
                 label: '영업이익',
                 type: 'bar',
-                yAxisID: 'A',
+                yAxisID: 'y',
                 data: [
                   information[2017]['영업이익'].replace(',', ''),
                   information[2018]['영업이익'].replace(',', ''),
@@ -100,7 +58,7 @@
               {
                 label: '순이익',
                 type: 'bar',
-                yAxisID: 'A',
+                yAxisID: 'y',
                 data: [
                   information[2017]['순이익'].replace(',', ''),
                   information[2018]['순이익'].replace(',', ''),
@@ -114,9 +72,9 @@
               {
                 label: '영업이익률',
                 type: 'line',
-                yAxisID: 'B',
+                yAxisID: 'percentage',
                 fill: false,
-                lineTension: 0,
+                tension: 0,
                 pointRadius: 5,
                 backgroundColor: '#49A83E',
                 hoverBackgroundColor: 'rgba(34,49,186,0.42)',
@@ -139,6 +97,28 @@
                 ],
               },
             ],
+          };
+          let chartOptions = {
+            scales: {
+              x: {
+                title: {
+                  display: true,
+                  text: '[년도]',
+                },
+              },
+              y: {
+                beginAtZero: false,
+                type: 'linear',
+                postion: 'left',
+                title: { display: true, text: '[억원]' },
+              },
+              percentage: {
+                type: 'linear',
+                display: true,
+                position: 'right',
+                title: { display: true, text: '[%]' },
+              },
+            },
           };
           const chart = new Chart(context, {
             data: chartdata,
