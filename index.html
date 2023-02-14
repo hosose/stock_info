@@ -36,11 +36,11 @@
                 type: 'bar',
                 yAxisID: 'y',
                 data: [
-                  information[2017]['매출액'].replace(',', ''),
-                  information[2018]['매출액'].replace(',', ''),
-                  information[2019]['매출액'].replace(',', ''),
-                  information[2020]['매출액'].replace(',', ''),
-                  information[2021]['매출액'].replace(',', ''),
+                  information[2017]['매출액'].replaceAll(',', ''),
+                  information[2018]['매출액'].replaceAll(',', ''),
+                  information[2019]['매출액'].replaceAll(',', ''),
+                  information[2020]['매출액'].replaceAll(',', ''),
+                  information[2021]['매출액'].replaceAll(',', ''),
                 ],
                 backgroundColor: '#FF6283',
                 hoverBackgroundColor: 'rgba(189,37,113,0.41)',
@@ -50,11 +50,11 @@
                 type: 'bar',
                 yAxisID: 'y',
                 data: [
-                  information[2017]['영업이익'].replace(',', ''),
-                  information[2018]['영업이익'].replace(',', ''),
-                  information[2019]['영업이익'].replace(',', ''),
-                  information[2020]['영업이익'].replace(',', ''),
-                  information[2021]['영업이익'].replace(',', ''),
+                  information[2017]['영업이익'].replaceAll(',', ''),
+                  information[2018]['영업이익'].replaceAll(',', ''),
+                  information[2019]['영업이익'].replaceAll(',', ''),
+                  information[2020]['영업이익'].replaceAll(',', ''),
+                  information[2021]['영업이익'].replaceAll(',', ''),
                 ],
                 backgroundColor: '#36A2EB',
                 hoverBackgroundColor: 'rgba(34,49,186,0.42)',
@@ -64,11 +64,11 @@
                 type: 'bar',
                 yAxisID: 'y',
                 data: [
-                  information[2017]['순이익'].replace(',', ''),
-                  information[2018]['순이익'].replace(',', ''),
-                  information[2019]['순이익'].replace(',', ''),
-                  information[2020]['순이익'].replace(',', ''),
-                  information[2021]['순이익'].replace(',', ''),
+                  information[2017]['순이익'].replaceAll(',', ''),
+                  information[2018]['순이익'].replaceAll(',', ''),
+                  information[2019]['순이익'].replaceAll(',', ''),
+                  information[2020]['순이익'].replaceAll(',', ''),
+                  information[2021]['순이익'].replaceAll(',', ''),
                 ],
                 backgroundColor: '##FFCD56',
                 hoverBackgroundColor: 'rgba(34,49,186,0.42)',
@@ -83,20 +83,47 @@
                 backgroundColor: '#49A83E',
                 hoverBackgroundColor: 'rgba(34,49,186,0.42)',
                 data: [
-                  (information[2017]['영업이익'].replace(',', '') /
-                    information[2017]['매출액'].replace(',', '')) *
+                  (information[2017]['영업이익'].replaceAll(',', '') /
+                    information[2017]['매출액'].replaceAll(',', '')) *
                     100,
-                  (information[2018]['영업이익'].replace(',', '') /
-                    information[2018]['매출액'].replace(',', '')) *
+                  (information[2018]['영업이익'].replaceAll(',', '') /
+                    information[2018]['매출액'].replaceAll(',', '')) *
                     100,
-                  (information[2019]['영업이익'].replace(',', '') /
-                    information[2019]['매출액'].replace(',', '')) *
+                  (information[2019]['영업이익'].replaceAll(',', '') /
+                    information[2019]['매출액'].replaceAll(',', '')) *
                     100,
-                  (information[2020]['영업이익'].replace(',', '') /
-                    information[2020]['매출액'].replace(',', '')) *
+                  (information[2020]['영업이익'].replaceAll(',', '') /
+                    information[2020]['매출액'].replaceAll(',', '')) *
                     100,
-                  (information[2021]['영업이익'].replace(',', '') /
-                    information[2021]['매출액'].replace(',', '')) *
+                  (information[2021]['영업이익'].replaceAll(',', '') /
+                    information[2021]['매출액'].replaceAll(',', '')) *
+                    100,
+                ],
+              },
+              {
+                label: '순이익률',
+                type: 'line',
+                yAxisID: 'percentage',
+                fill: false,
+                tension: 0,
+                pointRadius: 5,
+                backgroundColor: '#EA802E',
+                hoverBackgroundColor: 'rgba(34,49,186,0.42)',
+                data: [
+                  (information[2017]['순이익'].replaceAll(',', '') /
+                    information[2017]['매출액'].replaceAll(',', '')) *
+                    100,
+                  (information[2018]['순이익'].replaceAll(',', '') /
+                    information[2018]['매출액'].replaceAll(',', '')) *
+                    100,
+                  (information[2019]['순이익'].replaceAll(',', '') /
+                    information[2019]['매출액'].replaceAll(',', '')) *
+                    100,
+                  (information[2020]['순이익'].replaceAll(',', '') /
+                    information[2020]['매출액'].replaceAll(',', '')) *
+                    100,
+                  (information[2021]['순이익'].replaceAll(',', '') /
+                    information[2021]['매출액'].replaceAll(',', '')) *
                     100,
                 ],
               },
