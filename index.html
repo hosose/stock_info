@@ -8,12 +8,16 @@
   </head>
   <body>
     <canvas id="infoChart"></canvas>
+    <input type="text" id="companyName" />
+    <button id="search" onclick="makeChart()">그래프 확인</button>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- <script type="text/javacript" src="Chart.js"></script> -->
     <script>
       const context = document.getElementById('infoChart').getContext('2d');
+
       const getInfo = () => {
-        const response = fetch('http://127.0.0.1:3001/crawling/월덱스');
+        const companyName = document.getElementById('companyName').value;
+        const response = fetch(`http://127.0.0.1:3001/crawling/${companyName}`);
         return response
           .then((res) => res.json())
           .then((data) => JSON.parse(data.information));
@@ -128,7 +132,7 @@
           console.log(err);
         }
       };
-      makeChart();
+
       /*
 
           */
